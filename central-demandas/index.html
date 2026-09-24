@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Central de Demandas — TI & Almoxarifado</title>
+<link rel="icon" href="assets/logo.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1><img src="assets/logo.png" alt="CEUMA" style="height:38px;width:auto;border-radius:6px"> Central de Demandas <span class="badge">TI · Manutenção · Almoxarifado</span></h1>
+    <button class="btn ghost small" id="themeBtn">🌓 Tema</button>
+  </header>
+
+  <div class="tabs">
+    <button class="tab active" data-view="painel">Painel</button>
+    <button class="tab" data-view="demandas">Demandas</button>
+    <button class="tab" data-view="almox">Almoxarifado</button>
+  </div>
+
+  <!-- PAINEL -->
+  <div class="view active" id="view-painel">
+    <div class="grid-stats" id="statsBox"></div>
+    <div class="card">
+      <h2>Últimas demandas</h2>
+      <div class="list" id="recentList"></div>
+    </div>
+  </div>
+
+  <!-- DEMANDAS -->
+  <div class="view" id="view-demandas">
+    <div class="card">
+      <h2>Registrar nova demanda</h2>
+      <div class="form-grid">
+        <div><label>Colaborador</label><input id="d_colab" placeholder="Nome"></div>
+        <div><label>Matrícula</label><input id="d_mat" placeholder="Ex: 5651"></div>
+        <div><label>Setor</label><input id="d_setor" placeholder="Ex: SECAD"></div>
+        <div><label>Máquina</label><input id="d_maq" placeholder="Ex: Lenovo"></div>
+        <div><label>Tombo</label><input id="d_tombo" placeholder="Nº patrimônio"></div>
+        <div><label>Data</label><input id="d_data" type="date"></div>
+        <div><label>Hora</label><input id="d_hora" type="time"></div>
+        <div><label>Status</label>
+          <select id="d_status">
+            <option value="EM_ANALISE">Em análise</option>
+            <option value="RESOLVIDO">Resolvido</option>
+            <option value="PENDENTE">Pendente</option>
+            <option value="EMPRESTIMO">Empréstimo</option>
+            <option value="CANCELADO">Cancelado</option>
+          </select>
+        </div>
+        <div class="full"><label>Problema</label><textarea id="d_prob" placeholder="Descreva o problema relatado"></textarea></div>
+        <div class="full"><label>Solução</label><textarea id="d_sol" placeholder="Descreva a solução aplicada"></textarea></div>
+      </div>
+      <button class="btn" id="addDemanda">+ Registrar demanda</button>
+    </div>
+
+    <div class="toolbar">
+      <input id="buscaD" placeholder="🔎 Buscar por colaborador, setor, máquina, tombo...">
+      <select id="filtroStatus">
+        <option value="">Todos os status</option>
+        <option value="EM_ANALISE">Em análise</option>
+        <option value="RESOLVIDO">Resolvido</option>
+        <option value="PENDENTE">Pendente</option>
+        <option value="EMPRESTIMO">Empréstimo</option>
+        <option value="CANCELADO">Cancelado</option>
+      </select>
+    </div>
+    <div class="list" id="demandasList"></div>
+  </div>
+
+  <!-- ALMOXARIFADO -->
+  <div class="view" id="view-almox">
+    <div class="card">
+      <h2>Registrar movimentação de material</h2>
+      <div class="form-grid">
+        <div><label>Item / Material</label><input id="a_item" placeholder="Ex: Cabo de rede UTP"></div>
+        <div><label>Quantidade</label><input id="a_qtd" type="number" min="1" value="1"></div>
+        <div><label>Tipo</label>
+          <select id="a_tipo"><option value="SAIDA">Saída (uso)</option><option value="ENTRADA">Entrada (estoque)</option></select>
+        </div>
+        <div><label>Setor destino</label><input id="a_setor" placeholder="Ex: Central de Atendimento"></div>
+        <div><label>Responsável</label><input id="a_resp" placeholder="Técnico responsável"></div>
+        <div><label>Data</label><input id="a_data" type="date"></div>
+        <div class="full"><label>Observação</label><input id="a_obs" placeholder="Ex: vinculado à demanda #..."></div>
+      </div>
+      <button class="btn" id="addAlmox">+ Registrar movimentação</button>
+    </div>
+    <div class="toolbar">
+      <input id="buscaA" placeholder="🔎 Buscar por item, setor, responsável...">
+    </div>
+    <div class="list" id="almoxList"></div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
